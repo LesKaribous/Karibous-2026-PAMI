@@ -1,0 +1,208 @@
+(footprint "9V-PP3"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(descr "Contact de batterie pour 1 pile(s) 9V RS PRO type A pression - RS PRO - 185-4727")
+	(tags "9V battery")
+	(property "Reference" "REF**"
+		(at 0 -0.5 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "103426de-a772-48f7-ae93-24d8c7c06722")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "9V-PP3"
+		(at 0 1 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "51b2eaa7-a7fa-4be8-80e4-9b3120b25787")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" "https://docs.rs-online.com/9617/A700000006710960.pdf"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "d5cb6734-ca68-4126-95f2-d6a6190f1e53")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" "Contact de batterie pour 1 pile(s) 9V RS PRO type A pression"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "5ec8b51b-3322-4f68-94ce-ca6a0f734767")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr through_hole)
+	(fp_rect
+		(start -13.25 7)
+		(end 13.25 53.25)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "a7f2083b-4bfc-456c-a1e0-7ffb7d95d964")
+	)
+	(fp_rect
+		(start -11 3.5)
+		(end -2 7)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "4cc1deda-abdc-4a73-b2b7-5cecc3510896")
+	)
+	(fp_rect
+		(start 2 3.5)
+		(end 11 7)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "885c909a-d5f0-4498-b13d-790e65388990")
+	)
+	(fp_text user "+"
+		(at -7.75 -0.25 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "4d281970-14e3-4b09-a01c-f86ab7b53c17")
+		(effects
+			(font
+				(size 2 2)
+				(thickness 0.5)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+	)
+	(fp_text user "-"
+		(at 5 -0.25 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "66552de8-e5e8-49a0-9bd5-08bd0be43d8a")
+		(effects
+			(font
+				(size 2 2)
+				(thickness 0.5)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 2.5 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "2f2ca00f-c656-44bd-aa2e-e6abd681ff40")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" thru_hole oval
+		(at -11.4 0)
+		(size 2.3 5)
+		(drill oval 1 2.6)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "2640e6ea-ed7a-43ec-abd7-bede1bed8bf8")
+	)
+	(pad "1" thru_hole oval
+		(at -6.35 2.8 90)
+		(size 2.3 5)
+		(drill oval 1 2.6)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "e8bc0d70-27da-4f52-ae05-802ba987ed8c")
+	)
+	(pad "1" thru_hole oval
+		(at -1.3 0)
+		(size 2.3 5)
+		(drill oval 1 2.6
+			(offset -0.2 0)
+		)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "a6e7c50b-c9ce-41c5-bb50-f55950031efd")
+	)
+	(pad "2" thru_hole oval
+		(at 1.3 0)
+		(size 2.3 5)
+		(drill oval 1 2.6
+			(offset 0.2 0)
+		)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "22335e43-b8d0-4815-a3d2-5ccff499bb28")
+	)
+	(pad "2" thru_hole oval
+		(at 6.35 2.8 90)
+		(size 2.3 5)
+		(drill oval 1 2.6)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "6445a74b-9705-4e03-a021-973c65f33fe7")
+	)
+	(pad "2" thru_hole oval
+		(at 11.4 0)
+		(size 2.3 5)
+		(drill oval 1 2.6)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "b562d63f-6592-4f88-b9e8-3c77c73576ff")
+	)
+	(group ""
+		(uuid "4e4c5ff1-d28f-4426-b914-e59ac89ad46f")
+		(members "22335e43-b8d0-4815-a3d2-5ccff499bb28" "6445a74b-9705-4e03-a021-973c65f33fe7"
+			"b562d63f-6592-4f88-b9e8-3c77c73576ff"
+		)
+	)
+	(group ""
+		(uuid "82e0e5bb-c2ba-4291-b467-df6f77065425")
+		(members "2640e6ea-ed7a-43ec-abd7-bede1bed8bf8" "a6e7c50b-c9ce-41c5-bb50-f55950031efd"
+			"e8bc0d70-27da-4f52-ae05-802ba987ed8c"
+		)
+	)
+	(embedded_fonts no)
+	(model "${KIPRJMOD}/Libraries/9V Battery.step"
+		(offset
+			(xyz 0 -7.5 8.5)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -0 -0 90)
+		)
+	)
+)
