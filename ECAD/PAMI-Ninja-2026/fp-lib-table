@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "xiao ESP32S3 Plus_PCB")(type "KiCad")(uri "${KIPRJMOD}/Libraries/Seeed Studio XIAO ESP32S3 Plus KiCAD Library 2/xiao ESP32S3 Plus_PCB.pretty")(options "")(descr ""))
+)
