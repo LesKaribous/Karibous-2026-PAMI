@@ -2,4 +2,5 @@
   (version 7)
   (lib (name "xiao ESP32C3_PCB")(type "KiCad")(uri "${KIPRJMOD}/Seeeduino xiao ESP32C3 KiCAD Library/xiao ESP32C3_PCB.pretty")(options "")(descr ""))
   (lib (name "PCB-Mount-PP3-9V")(type "KiCad")(uri "${KIPRJMOD}/libraries/PCB-Mount-PP3-9V")(options "")(descr ""))
+  (lib (name "Switch")(type "KiCad")(uri "${KIPRJMOD}/libraries/Switch")(options "")(descr ""))
 )

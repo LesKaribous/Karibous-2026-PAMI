@@ -176,6 +176,206 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Connector_Generic:Conn_01x04"
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "J"
+				(at 0 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "Conn_01x04"
+				(at 0 -7.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Generic connector, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/)"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "connector"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "Connector*:*_1x??_*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "Conn_01x04_1_1"
+				(rectangle
+					(start -1.27 3.81)
+					(end 1.27 -6.35)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(rectangle
+					(start -1.27 2.667)
+					(end 0 2.413)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 0.127)
+					(end 0 -0.127)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 -2.413)
+					(end 0 -2.667)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 -4.953)
+					(end 0 -5.207)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at -5.08 2.54 0)
+					(length 3.81)
+					(name "Pin_1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 0 0)
+					(length 3.81)
+					(name "Pin_2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -2.54 0)
+					(length 3.81)
+					(name "Pin_3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -5.08 0)
+					(length 3.81)
+					(name "Pin_4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Connector_Generic:Conn_01x05"
 			(pin_names
 				(offset 1.016)
@@ -3252,6 +3452,173 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Switch:SW_SPDT"
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "SW"
+				(at 0 4.318 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "SW_SPDT"
+				(at 0 -5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Switch, single pole double throw"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "switch single-pole double-throw spdt ON-ON"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "SW_SPDT_0_0"
+				(circle
+					(center -2.032 0)
+					(radius 0.508)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 2.032 -2.54)
+					(radius 0.508)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "SW_SPDT_0_1"
+				(polyline
+					(pts
+						(xy -1.524 0.254) (xy 1.651 2.286)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 2.032 2.54)
+					(radius 0.508)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "SW_SPDT_1_1"
+				(pin passive line
+					(at -5.08 0 0)
+					(length 2.54)
+					(name "B"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 5.08 2.54 180)
+					(length 2.54)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 5.08 -2.54 180)
+					(length 2.54)
+					(name "C"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Transistor_Array:ULN2803A"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -4282,6 +4649,12 @@
 		(uuid "22e7cd95-f55d-4a3f-bd2f-d9e11c117d8f")
 	)
 	(junction
+		(at 16.51 27.94)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "29350b79-ca3c-4cb8-954f-d28a1a1e7d49")
+	)
+	(junction
 		(at 40.64 109.22)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4316,12 +4689,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "7b77645a-b51c-4947-8453-2865eea47169")
-	)
-	(junction
-		(at 16.51 25.4)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "7b7821b1-3c6e-4e88-88b9-824ae3680550")
 	)
 	(junction
 		(at 59.69 25.4)
@@ -4667,16 +5034,6 @@
 	)
 	(wire
 		(pts
-			(xy 19.05 25.4) (xy 16.51 25.4)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "80e2d14d-1c44-41db-8719-3ffecbe21a6c")
-	)
-	(wire
-		(pts
 			(xy 176.53 31.75) (xy 176.53 30.48)
 		)
 		(stroke
@@ -4754,16 +5111,6 @@
 			(type default)
 		)
 		(uuid "b9c75876-1272-43a1-8416-b6c5420de63b")
-	)
-	(wire
-		(pts
-			(xy 16.51 25.4) (xy 16.51 27.94)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "be8a9b3b-2911-48b3-9428-5b7676798ed9")
 	)
 	(wire
 		(pts
@@ -4927,7 +5274,7 @@
 	)
 	(wire
 		(pts
-			(xy 16.51 24.13) (xy 16.51 25.4)
+			(xy 16.51 24.13) (xy 16.51 27.94)
 		)
 		(stroke
 			(width 0)
@@ -5024,6 +5371,16 @@
 			(type default)
 		)
 		(uuid "ec411c8f-d217-40e7-b2fa-9b8391971692")
+	)
+	(wire
+		(pts
+			(xy 16.51 27.94) (xy 19.05 27.94)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f42c618e-c34d-43fb-9663-9813d0515251")
 	)
 	(wire
 		(pts
@@ -5170,6 +5527,28 @@
 		(uuid "0c8e1785-07b1-4792-914d-518e5ed078ff")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 119.9462 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "SDA"
+		(shape input)
+		(at 146.05 69.85 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "142af61d-525f-4f25-89fc-3e9557cd7943")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 152.6033 69.85 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5905,6 +6284,28 @@
 			)
 		)
 	)
+	(global_label "SCL"
+		(shape input)
+		(at 146.05 72.39 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "f0862c9d-260a-4a95-aac5-2e2e85895ddc")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 152.5428 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
 	(symbol
 		(lib_id "power:GND")
 		(at 95.25 91.44 0)
@@ -6045,6 +6446,72 @@
 			(project ""
 				(path "/ee1ab5a3-c8dc-4a8b-bf06-81b3d66d1735"
 					(reference "J1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+5V")
+		(at 146.05 74.93 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "082f341d-1724-46a3-8b34-c18df9b0cfb4")
+		(property "Reference" "#PWR033"
+			(at 142.24 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+5V"
+			(at 144.526 74.168 90)
+			(effects
+				(font
+					(size 0.889 0.889)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 146.05 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 146.05 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+5V\""
+			(at 146.05 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d8a9e953-0898-400e-abc9-d5861b831372")
+		)
+		(instances
+			(project "MicroPAMI-2026"
+				(path "/ee1ab5a3-c8dc-4a8b-bf06-81b3d66d1735"
+					(reference "#PWR033")
 					(unit 1)
 				)
 			)
@@ -8339,6 +8806,77 @@
 		)
 	)
 	(symbol
+		(lib_id "Switch:SW_SPDT")
+		(at 24.13 25.4 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "7c4f234f-0671-4840-8a0f-56949fa62f0c")
+		(property "Reference" "SW4"
+			(at 20.574 25.146 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SW_SPDT"
+			(at 10.16 24.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "Switch:SK-12D10 1P2T"
+			(at 24.13 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 24.13 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 24.13 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "2b31c2d4-4df5-4aad-9cb2-af369c9f3a93")
+		)
+		(pin "2"
+			(uuid "7824725d-2953-4ac9-b0c3-d6c1868ce9db")
+		)
+		(pin "3"
+			(uuid "07250a11-77e6-4dcf-afff-a26018b95a8c")
+		)
+		(instances
+			(project "MicroPAMI-2026"
+				(path "/ee1ab5a3-c8dc-4a8b-bf06-81b3d66d1735"
+					(reference "SW4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "LED:WS2812B")
 		(at 48.26 62.23 0)
 		(unit 1)
@@ -8670,74 +9208,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Switch:SW_Push")
-		(at 24.13 25.4 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "91e363cc-e516-4a79-a776-cf4d984d5bd0")
-		(property "Reference" "SW1"
-			(at 24.13 17.78 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "SW_Push"
-			(at 24.13 20.32 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Connector_Molex:Molex_KK-254_AE-6410-02A_1x02_P2.54mm_Vertical"
-			(at 24.13 20.32 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 24.13 20.32 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Push button switch, generic, two pins"
-			(at 24.13 25.4 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "35dbf05e-b9d4-4580-af74-4eb7797a53e9")
-		)
-		(pin "2"
-			(uuid "3a09d6b8-5267-4657-a361-9a256264eaa9")
-		)
-		(instances
-			(project ""
-				(path "/ee1ab5a3-c8dc-4a8b-bf06-81b3d66d1735"
-					(reference "SW1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:Battery_Cell")
 		(at 16.51 33.02 0)
 		(unit 1)
@@ -8745,24 +9215,23 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "9328a34f-384a-423a-a522-d349834e8a49")
 		(property "Reference" "BT1"
-			(at 20.32 29.9084 0)
+			(at 22.098 36.322 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
 		(property "Value" "9V-Battery"
-			(at 20.32 32.4484 0)
+			(at 28.448 34.544 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
 		(property "Footprint" "PCB-Mount-PP3-9V:9V-PP3"
@@ -10111,6 +10580,72 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 146.05 77.47 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "dfc13d0c-93c7-44aa-9660-05441a08211a")
+		(property "Reference" "#PWR052"
+			(at 146.05 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 146.05 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 146.05 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 146.05 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 146.05 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "704ee502-c1b5-47e8-93bb-fbc2779356e8")
+		)
+		(instances
+			(project "MicroPAMI-2026"
+				(path "/ee1ab5a3-c8dc-4a8b-bf06-81b3d66d1735"
+					(reference "#PWR052")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Switch:SW_Push")
 		(at 36.83 104.14 270)
 		(unit 1)
@@ -10175,6 +10710,82 @@
 			(project "Mini-PAMI"
 				(path "/ee1ab5a3-c8dc-4a8b-bf06-81b3d66d1735"
 					(reference "SW3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector_Generic:Conn_01x04")
+		(at 140.97 72.39 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "e3639d7f-6585-4684-9378-a909885e3473")
+		(property "Reference" "J13"
+			(at 138.43 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "OLED"
+			(at 138.43 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Connector_PinSocket_2.54mm:PinSocket_1x04_P2.54mm_Vertical"
+			(at 140.97 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 140.97 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 140.97 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "0a30ff92-70a9-4339-9b39-1da2a602c5b9")
+		)
+		(pin "2"
+			(uuid "2f11bd43-e1ab-4af3-aa4d-a0c18d9fa5f4")
+		)
+		(pin "3"
+			(uuid "838c7e92-9e26-46ca-9473-4e604dc8d22a")
+		)
+		(pin "4"
+			(uuid "cf924e50-02ed-4273-b23b-0ea5abfbcc1f")
+		)
+		(instances
+			(project "MicroPAMI-2026"
+				(path "/ee1ab5a3-c8dc-4a8b-bf06-81b3d66d1735"
+					(reference "J13")
 					(unit 1)
 				)
 			)
