@@ -7844,7 +7844,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "ATtiny3226-S"
+		(property "Value" "ATtiny3216-S"
 			(at 97.3933 45.72 0)
 			(effects
 				(font
