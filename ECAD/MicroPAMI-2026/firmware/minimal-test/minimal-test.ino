@@ -100,10 +100,10 @@ enum MotorState {
 
 MotorState motorState = MS_IDLE;
 
-const uint16_t STEPS_PER_PHASE = 512;     // ajuste si tu veux (512 = test court)
+const uint16_t STEPS_PER_PHASE = 2000;     // ajuste si tu veux (512 = test court)
 const uint16_t PAUSE_MS        = 300;
 
-const uint16_t stepIntervalUs  = 2500;    // vitesse: 2000-5000 us typique (plus petit = plus rapide)
+const uint16_t stepIntervalUs  = 1000;    // vitesse: 2000-5000 us typique (plus petit = plus rapide)
 
 uint16_t stepsRemaining = 0;
 unsigned long lastStepUs = 0;
