@@ -56,7 +56,7 @@ Servo servo;
 
 bool servoDir = false;
 unsigned long lastServoUpdate = 0;
-const unsigned long servoPeriod = 300; // ms
+const unsigned long servoPeriod = 800; // ms
 
 // -------------------- STEPPERS (28BYJ-48) --------------------
 AccelStepper motorRight(AccelStepper::FULL4WIRE, R_IN1, R_IN3, R_IN2, R_IN4);
@@ -67,7 +67,7 @@ float motorAccel = 400.0;
 
 // -------------------- MATCH TIMER --------------------
 unsigned long startTime = 0;
-const unsigned long matchDuration = 5000UL; // 5 seconds
+const unsigned long matchDuration = 15000UL; // 15 seconds
 
 // -------------------- FUNCTIONS --------------------
 
@@ -75,6 +75,8 @@ void updateTeamColor();
 bool getSensor();
 void updateMatchTimer();
 void endMatch();
+void isObstacleDetected();
+void updateMotors();
 
 void updateTeamColor() {
   if (digitalRead(COLOR_SELECTOR) == HIGH) {
@@ -92,7 +94,6 @@ bool getSensor() {
   bool previousObstacle = obstacle;
   obstacle = rightLow || leftLow;
 
-
   if (obstacle && !previousObstacle) {
     pixel.setPixelColor(0, pixel.Color(255, 0, 0));          // RED
     pixel.show();
@@ -104,6 +105,46 @@ bool getSensor() {
     roboEyes.setMood(HAPPY);
   }
   return obstacle;
+}
+
+void isObstacleDetected() {
+  if(getSensor()) {
+    // Obstacle detected
+    long tempDistanceToGo_Right = motorRight.distanceToGo();
+    long tempDistanceToGo_Left  = motorLeft.distanceToGo();
+
+    motorLeft.setAcceleration(motorAccel * 3);
+    motorRight.setAcceleration(motorAccel * 3); 
+    motorRight.setMaxSpeed(motorMaxSpeed * 3);
+    motorLeft.setMaxSpeed(motorMaxSpeed * 3);
+
+    motorRight.move(0);
+    motorLeft.move(0);
+
+    tempDistanceToGo_Left = tempDistanceToGo_Left + motorLeft.distanceToGo();
+    tempDistanceToGo_Right = tempDistanceToGo_Right + motorRight.distanceToGo();
+
+    updateMotors();
+    while(motorLeft.isRunning() || motorRight.isRunning()) updateMotors();
+    while (getSensor()) {
+      // wait until obstacle is gone
+      updateMatchTimer();
+      roboEyes.update();
+    }
+
+    motorLeft.setAcceleration(motorAccel);
+    motorRight.setAcceleration(motorAccel); 
+    motorRight.setMaxSpeed(motorMaxSpeed);
+    motorLeft.setMaxSpeed(motorMaxSpeed);
+
+    motorRight.moveTo(tempDistanceToGo_Right);
+    motorLeft.moveTo(tempDistanceToGo_Left);
+  }
+}
+
+void updateMotors(){
+  motorLeft.run();
+  motorRight.run();
 }
 
 void updateMatchTimer(){
@@ -193,15 +234,19 @@ void setup() {
   pixel.show();
   roboEyes.setMood(HAPPY);
   roboEyes.anim_laugh();
+
+  motorLeft.moveTo(10000);
+  motorRight.moveTo(-10000);
 }
 
 void loop() {
   
   updateMatchTimer();
-  getSensor();
-  roboEyes.update();
-
+  isObstacleDetected();
+  
+  //roboEyes.update();
   motorRight.run();
   motorLeft.run();
+  
 
 }
