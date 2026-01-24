@@ -5,6 +5,9 @@
 #include <Tiny4kOLED.h>
 #include <AccelStepper.h>
 
+#include <Adafruit_SSD1306.h>
+#include <FluxGarage_RoboEyes.h>
+
 // -------------------- PINS --------------------
 #define PIXEL_PIN        PIN_PC1
 #define COLOR_SELECTOR   PIN_PC2
@@ -46,11 +49,9 @@ const unsigned long servoPeriod = 300; // ms
 AccelStepper motorRight(AccelStepper::FULL4WIRE, R_IN1, R_IN3, R_IN2, R_IN4);
 AccelStepper motorLeft(AccelStepper::FULL4WIRE, L_IN1, L_IN3, L_IN2, L_IN4);
 
-// -------------------- SEQUENCE MOTEURS --------------------
+float motorMaxSpeed = 700.0;
+float motorAccel = 400.0; //
 
-
-
-// -------------------- SETUP / LOOP --------------------
 void setup() {
   pinMode(COLOR_SELECTOR, INPUT_PULLUP);
   pinMode(TIRETTE_PIN, INPUT_PULLUP);
@@ -83,14 +84,12 @@ void setup() {
 
   // Moteurs pas à pas
 
-  motorRight.setMaxSpeed(700.0);     // pas/s
-  motorRight.setAcceleration(400.0);// pas/s^2
+  motorRight.setMaxSpeed(motorMaxSpeed);
+  motorRight.setAcceleration(motorAccel);
 
-  motorLeft.setMaxSpeed(700.0);
-  motorLeft.setAcceleration(400.0);
+  motorLeft.setMaxSpeed(motorMaxSpeed);
+  motorLeft.setAcceleration(motorAccel);
 
-  motorRight.moveTo(-10048);
-  motorLeft.moveTo(10048);
 }
 
 void loop() {
