@@ -131,6 +131,18 @@ void setCurrentRot(float _rot){
   currentPose.setRot(_rot);
 }
 
+float getCurrentY(){
+  return currentPose.getY();
+}
+
+float getCurrentX(){
+  return currentPose.getX();
+}
+
+float getCurrentRot(){
+  return currentPose.getRot();
+}
+
 void setOpponentChecking(bool _opponentChecking){
   opponentChecking = _opponentChecking;
 }

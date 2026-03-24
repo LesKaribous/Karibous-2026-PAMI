@@ -17,19 +17,24 @@ void startMatch(){
     matchState = MATCH_BEGIN;
 }
 void updateMatchTime(){
-  if(getMatchState() == MATCH_BEGIN || getMatchState() == PAMI_RUN){
+  if(getMatchState() == MATCH_BEGIN || getMatchState() == PAMI_RUN || getMatchState() == PAMI_WAIT){
     elapsedTime = millis() - startTime ;
     if(elapsedTime>= TIME_END_MATCH)
     {
         setMatchState(PAMI_STOP);
         debug("Match End");
     }
-    else if(elapsedTime>= TIME_START_MATCH && getMatchState() == MATCH_BEGIN)
+    else if(elapsedTime>= TIME_MAIN_BOT_AWAY && getMatchState() == MATCH_BEGIN)
+    {
+        setMatchState(MAIN_BOT_AWAY);
+        debug("Main bot away");
+    }
+    else if(elapsedTime>= TIME_START_MATCH && getMatchState() == PAMI_WAIT )
     {
         setMatchState(PAMI_RUN);
         debug("Match Run");
     }
-    else if(getMatchState() == MATCH_BEGIN)
+    else if(getMatchState() == MATCH_WAIT || getMatchState() == PAMI_WAIT)
     {
         infoLCD(String((TIME_START_MATCH-elapsedTime)/1000) + " sec");
         debug("Waiting...");
