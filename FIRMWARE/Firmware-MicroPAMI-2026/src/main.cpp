@@ -18,6 +18,8 @@
 #define SENSOR_LEFT      PIN_PA3
 
 bool obstacle = false;
+bool matchEnded = false;
+bool strategyDone = false;
 
 // Moteur gauche : PB2 PB3 PB4 PB5
 #define L_IN1 PIN_PB2
@@ -64,10 +66,20 @@ AccelStepper motorLeft(AccelStepper::FULL4WIRE, L_IN1, L_IN3, L_IN2, L_IN4);
 
 float motorMaxSpeed = 700.0;
 float motorAccel = 400.0;
+const float obstacleStopMultiplier = 10.0;
+const float obstacleBackoffMm = 50.0;
+
+// -------------------- MOVEMENT CALIBRATION --------------------
+const float stepsPerWheelRevolution = 2048.0; // 28BYJ-48: adjust if needed
+const float wheelDiameterMm = 60.0;           // measure your wheel
+const float wheelBaseMm = 67.0;               // distance between left and right wheels
+const float pi = 3.14159265;
+const float stepsPerMm = stepsPerWheelRevolution / (pi * wheelDiameterMm);
 
 // -------------------- MATCH TIMER --------------------
 unsigned long startTime = 0;
-const unsigned long matchDuration = 15000UL; // 15 seconds
+const unsigned long robotStartTime = 0L; // 85 seconds
+const unsigned long matchDuration = 100000UL; // 100 seconds
 
 // -------------------- FUNCTIONS --------------------
 
@@ -77,6 +89,17 @@ void updateMatchTimer();
 void endMatch();
 void isObstacleDetected();
 void updateMotors();
+void updateEndMatchAnimation();
+long mmToSteps(float mm);
+long degreesToSteps(float degrees);
+void goSteps(long steps);
+void turnSteps(long steps);
+void go(float mm);
+void turn(float degrees);
+bool run();
+void waitForMove();
+void waitUntilMatchTime(unsigned long targetTime);
+void strategy();
 
 void updateTeamColor() {
   if (digitalRead(COLOR_SELECTOR) == HIGH) {
@@ -108,54 +131,90 @@ bool getSensor() {
 }
 
 void isObstacleDetected() {
+  if (matchEnded) {
+    return;
+  }
+
   if(getSensor()) {
     // Obstacle detected
-    long tempDistanceToGo_Right = motorRight.distanceToGo();
-    long tempDistanceToGo_Left  = motorLeft.distanceToGo();
+    long targetRight = motorRight.targetPosition();
+    long targetLeft  = motorLeft.targetPosition();
 
-    motorLeft.setAcceleration(motorAccel * 3);
-    motorRight.setAcceleration(motorAccel * 3); 
-    motorRight.setMaxSpeed(motorMaxSpeed * 3);
-    motorLeft.setMaxSpeed(motorMaxSpeed * 3);
+    motorLeft.setAcceleration(motorAccel * obstacleStopMultiplier);
+    motorRight.setAcceleration(motorAccel * obstacleStopMultiplier);
+    motorRight.setMaxSpeed(motorMaxSpeed * obstacleStopMultiplier);
+    motorLeft.setMaxSpeed(motorMaxSpeed * obstacleStopMultiplier);
 
-    motorRight.move(0);
-    motorLeft.move(0);
-
-    tempDistanceToGo_Left = tempDistanceToGo_Left + motorLeft.distanceToGo();
-    tempDistanceToGo_Right = tempDistanceToGo_Right + motorRight.distanceToGo();
+    motorRight.stop();
+    motorLeft.stop();
 
     updateMotors();
-    while(motorLeft.isRunning() || motorRight.isRunning()) updateMotors();
+    while((motorLeft.isRunning() || motorRight.isRunning()) && !matchEnded) {
+      updateMatchTimer();
+      updateMotors();
+    }
+    if (matchEnded) {
+      return;
+    }
+
+    motorLeft.setAcceleration(motorAccel);
+    motorRight.setAcceleration(motorAccel);
+    motorRight.setMaxSpeed(motorMaxSpeed);
+    motorLeft.setMaxSpeed(motorMaxSpeed);
+
+    long backoffSteps = mmToSteps(obstacleBackoffMm);
+    motorLeft.move(-backoffSteps);
+    motorRight.move(backoffSteps);
+
+    while((motorLeft.isRunning() || motorRight.isRunning()) && !matchEnded) {
+      updateMatchTimer();
+      updateMotors();
+    }
+    if (matchEnded) {
+      return;
+    }
+
     while (getSensor()) {
       // wait until obstacle is gone
       updateMatchTimer();
       roboEyes.update();
+      if (matchEnded) {
+        return;
+      }
     }
 
-    motorLeft.setAcceleration(motorAccel);
-    motorRight.setAcceleration(motorAccel); 
-    motorRight.setMaxSpeed(motorMaxSpeed);
-    motorLeft.setMaxSpeed(motorMaxSpeed);
-
-    motorRight.moveTo(tempDistanceToGo_Right);
-    motorLeft.moveTo(tempDistanceToGo_Left);
+    if (!matchEnded) {
+      motorRight.moveTo(targetRight);
+      motorLeft.moveTo(targetLeft);
+    }
   }
 }
 
 void updateMotors(){
+  if (matchEnded) {
+    return;
+  }
+
   motorLeft.run();
   motorRight.run();
 }
 
 void updateMatchTimer(){
-  if (millis()-startTime >= matchDuration){
+  if (!matchEnded && millis()-startTime >= matchDuration){
     endMatch();
   } 
 }
 
 void endMatch() {
+  if (matchEnded) {
+    return;
+  }
+
+  matchEnded = true;
   motorRight.stop();
   motorLeft.stop();
+  motorRight.setCurrentPosition(motorRight.currentPosition());
+  motorLeft.setCurrentPosition(motorLeft.currentPosition());
 
   // NeoPixel
   pixel.setPixelColor(0, pixel.Color(255, 165, 0));          // ORANGE
@@ -163,18 +222,111 @@ void endMatch() {
 
   // RoboEyes -- TBD
   roboEyes.setMood(DEFAULT);
+}
+
+void updateEndMatchAnimation() {
+  roboEyes.update(); // Update the eyes animations
 
   // Servo alternate
-  while(1) 
-  {
-    roboEyes.update(); // Update the eyes animations
-    // Servo alternate
-    if (millis() - lastServoUpdate >= servoPeriod) {
-        lastServoUpdate = millis();
-        servoDir = !servoDir;
-        servo.write(servoDir ? 45 : 90);
-      }
+  if (millis() - lastServoUpdate >= servoPeriod) {
+    lastServoUpdate = millis();
+    servoDir = !servoDir;
+    servo.write(servoDir ? 45 : 90);
   }
+}
+
+long mmToSteps(float mm) {
+  if (mm >= 0.0) {
+    return (long)(mm * stepsPerMm + 0.5);
+  }
+
+  return (long)(mm * stepsPerMm - 0.5);
+}
+
+long degreesToSteps(float degrees) {
+  float turnDistanceMm = (pi * wheelBaseMm) * (degrees / 360.0);
+  return mmToSteps(turnDistanceMm);
+}
+
+void goSteps(long steps) {
+  if (matchEnded) {
+    return;
+  }
+
+  motorLeft.move(steps);
+  motorRight.move(-steps);
+}
+
+void turnSteps(long steps) {
+  if (matchEnded) {
+    return;
+  }
+
+  motorLeft.move(steps);
+  motorRight.move(steps);
+}
+
+void go(float mm) {
+  goSteps(mmToSteps(mm));
+}
+
+void turn(float degrees) {
+  turnSteps(degreesToSteps(degrees));
+}
+
+bool run() {
+  updateMatchTimer();
+
+  if (matchEnded) {
+    updateEndMatchAnimation();
+    return false;
+  }
+
+  isObstacleDetected();
+
+  if (matchEnded) {
+    updateEndMatchAnimation();
+    return false;
+  }
+
+  updateMotors();
+
+  return motorLeft.isRunning() || motorRight.isRunning();
+}
+
+void waitForMove() {
+  while (!matchEnded && run()) {
+  }
+}
+
+void waitUntilMatchTime(unsigned long targetTime) {
+  while (!matchEnded && millis() - startTime < targetTime) {
+    run();
+  }
+}
+
+void strategy() {
+  waitUntilMatchTime(robotStartTime);
+  if (matchEnded) {
+    return;
+  }
+
+  pixel.setPixelColor(0, pixel.Color(0, 255, 0));          // VERT
+  pixel.show();
+  roboEyes.setMood(HAPPY);
+  roboEyes.anim_laugh();
+
+  // Strategie: ajoute tes mouvements ici.
+  go(750.0);
+  waitForMove();
+
+  // Exemple:
+  // turn(90.0);
+  // waitForMove();
+  // go(150.0);
+  // waitForMove();
+
+  endMatch();
 }
 
 // -------------------- SETUP / LOOP --------------------
@@ -230,23 +382,16 @@ void setup() {
 
   startTime = millis();
 
-  pixel.setPixelColor(0, pixel.Color(0, 255, 0));          // VERT
+  pixel.setPixelColor(0, pixel.Color(255, 255, 0));        // JAUNE
   pixel.show();
-  roboEyes.setMood(HAPPY);
-  roboEyes.anim_laugh();
-
-  motorLeft.moveTo(10000);
-  motorRight.moveTo(-10000);
+  roboEyes.setMood(DEFAULT);
 }
 
 void loop() {
-  
-  updateMatchTimer();
-  isObstacleDetected();
-  
-  //roboEyes.update();
-  motorRight.run();
-  motorLeft.run();
-  
+  if (!strategyDone) {
+    strategyDone = true;
+    strategy();
+  }
 
+  run();
 }
