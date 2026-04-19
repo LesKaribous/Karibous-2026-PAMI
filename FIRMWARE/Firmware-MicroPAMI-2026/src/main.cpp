@@ -78,7 +78,7 @@ const float stepsPerMm = stepsPerWheelRevolution / (pi * wheelDiameterMm);
 
 // -------------------- MATCH TIMER --------------------
 unsigned long startTime = 0;
-const unsigned long robotStartTime = 0L; // 85 seconds
+const unsigned long robotStartTime = 85000UL; // 85 seconds
 const unsigned long matchDuration = 100000UL; // 100 seconds
 
 // -------------------- FUNCTIONS --------------------
@@ -310,11 +310,8 @@ void strategy() {
   if (matchEnded) {
     return;
   }
-
-  pixel.setPixelColor(0, pixel.Color(0, 255, 0));          // VERT
-  pixel.show();
-  roboEyes.setMood(HAPPY);
-  roboEyes.anim_laugh();
+  //roboEyes.setMood(HAPPY);
+  //roboEyes.anim_laugh();
 
   // Strategie: ajoute tes mouvements ici.
   go(750.0);
@@ -382,7 +379,7 @@ void setup() {
 
   startTime = millis();
 
-  pixel.setPixelColor(0, pixel.Color(255, 255, 0));        // JAUNE
+  pixel.setPixelColor(0, pixel.Color(0, 255, 0));          // VERT
   pixel.show();
   roboEyes.setMood(DEFAULT);
 }
@@ -393,5 +390,6 @@ void loop() {
     strategy();
   }
 
+  //endMatch();
   run();
 }

@@ -180,12 +180,12 @@ void strategiePAMI()
   {
     if (getTeamColor() == TEAM_BLUE)
     {
-      goTo(3000-600, 600);
+      goTo(3000-600, 930);
       goTo(3000-1425, 1128);
     }
     else
     {
-      goTo(600, 600);
+      goTo(600, 930);
       goTo(1425, 1128);
     }
   }
@@ -194,11 +194,13 @@ void strategiePAMI()
     if (getTeamColor() == TEAM_BLUE)
     {
       pause(2000);
+      goTo(3000-400, 550);
       goTo(3000-1400, 1820);
     }
     else
     {
       pause(2000);
+      goTo(400, 550);
       goTo(1400, 1820);
     }
   }
